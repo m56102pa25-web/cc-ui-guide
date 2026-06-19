@@ -306,6 +306,7 @@
     transition: border-color 0.2s;
   }
   .card:hover { border-color: #d4a574; }
+  .card.highlighted { border-color: #d4a574; background: #26211c; }
   .card-en { font-size: 0.78rem; color: #d4a574; margin-bottom: 4px; font-weight: bold; }
   .card-ja { font-size: 0.9rem; color: #ddd; margin-bottom: 6px; }
   .card-desc { font-size: 0.78rem; color: #888; line-height: 1.5; }
@@ -411,6 +412,110 @@
     font-weight: bold;
     cursor: pointer;
   }
+  .result-review-btn {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 14px auto 0;
+    background: transparent;
+    border: 1.5px solid #d4a574;
+    color: #d4a574;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* ===== 検索ボックス・カテゴリchips（図鑑） ===== */
+  .guide-tools { margin-bottom: 20px; }
+  .search-box {
+    width: 100%;
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 11px 14px;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .search-box::placeholder { color: #666; }
+  .search-box:focus { outline: none; border-color: #d4a574; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    color: #aaa;
+    padding: 5px 13px;
+    border-radius: 14px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .chip.active { background: #d4a574; color: #1a1a1a; border-color: #d4a574; font-weight: bold; }
+  .card-cat {
+    display: inline-block;
+    font-size: 0.65rem;
+    color: #d4a574;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    padding: 1px 9px;
+    margin-top: 9px;
+  }
+  .no-result { color: #666; text-align: center; padding: 24px; font-size: 0.85rem; }
+
+  /* ===== 暗記カード（フラッシュカード） ===== */
+  .flash-container { max-width: 480px; margin: 0 auto; padding: 0 16px 40px; }
+  .flash-intro { text-align: center; color: #888; font-size: 0.85rem; margin-bottom: 14px; }
+  .flash-progress { text-align: center; color: #d4a574; font-size: 0.85rem; font-weight: bold; margin-bottom: 14px; }
+  .flash-card { perspective: 1000px; height: 300px; margin-bottom: 18px; cursor: pointer; }
+  .flash-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.5s; transform-style: preserve-3d;
+  }
+  .flash-card.flipped .flash-inner { transform: rotateY(180deg); }
+  .flash-face {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 14px; border: 1px solid #3a3a3a;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px; text-align: center;
+  }
+  .flash-front { background: #222; }
+  .flash-back { background: #1e2830; transform: rotateY(180deg); }
+  .flash-front-en { font-size: 1.5rem; color: #d4a574; font-weight: bold; margin-bottom: 12px; }
+  .flash-hint { font-size: 0.75rem; color: #666; }
+  .flash-back-ja { font-size: 1.25rem; color: #fff; font-weight: bold; margin-bottom: 14px; }
+  .flash-back-desc { font-size: 0.9rem; color: #c8dce8; line-height: 1.65; }
+  .flash-controls { display: flex; gap: 10px; }
+  .flash-btn {
+    flex: 1; background: #2a2a2a; border: 1px solid #3a3a3a; color: #ddd;
+    padding: 13px; border-radius: 8px; font-size: 0.9rem; cursor: pointer;
+  }
+  .flash-btn.primary { background: #d4a574; color: #1a1a1a; border-color: #d4a574; font-weight: bold; }
+
+  /* ===== クイズ レベル選択 ===== */
+  .level-select { text-align: center; padding: 16px 0; }
+  .level-select h2 { font-size: 1.05rem; color: #e0e0e0; margin-bottom: 6px; }
+  .level-select p { font-size: 0.82rem; color: #888; margin-bottom: 22px; }
+  .level-btns { display: flex; flex-direction: column; gap: 12px; max-width: 360px; margin: 0 auto; }
+  .level-btn {
+    background: #222; border: 1.5px solid #3a3a3a; color: #e0e0e0;
+    padding: 16px; border-radius: 10px; font-size: 1rem; font-weight: bold;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .level-btn:hover { border-color: #d4a574; }
+  .level-btn .lv-sub { display: block; font-size: 0.72rem; color: #888; font-weight: normal; margin-top: 4px; }
+  .q-level-tag {
+    display: inline-block; font-size: 0.68rem; font-weight: bold;
+    color: #1a1a1a; background: #d4a574; border-radius: 10px; padding: 1px 9px; margin-left: 6px;
+  }
+
+  /* ===== 正誤アニメーション ===== */
+  @keyframes pop { 0%{transform:scale(1);} 50%{transform:scale(1.04);} 100%{transform:scale(1);} }
+  @keyframes shake { 0%,100%{transform:translateX(0);} 20%{transform:translateX(-6px);} 60%{transform:translateX(6px);} }
+  .choice-btn.correct { animation: pop 0.3s ease; }
+  .choice-btn.wrong { animation: shake 0.3s ease; }
 
   /* ===== iPhone（スマホ）向け最適化 ===== */
   @media (max-width: 480px) {
@@ -448,6 +553,12 @@
     .quiz-q-box { padding: 18px; }
     .quiz-q-text { font-size: 1rem; }
     .choice-btn { padding: 13px 15px; }
+
+    .tabs { flex-wrap: wrap; }
+    .tab-btn { padding: 9px 14px; font-size: 0.82rem; }
+    .flash-card { height: 260px; }
+    .flash-front-en { font-size: 1.3rem; }
+    .flash-back-ja { font-size: 1.1rem; }
   }
 </style>
 </head>
@@ -456,8 +567,9 @@
 <h1>🤖 Claude Code UI ガイド</h1>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('guide')">📖 図鑑モード</button>
-  <button class="tab-btn" onclick="switchTab('quiz')">🧠 クイズモード</button>
+  <button class="tab-btn active" onclick="switchTab('guide', this)">📖 図鑑</button>
+  <button class="tab-btn" onclick="switchTab('flash', this)">🎴 暗記カード</button>
+  <button class="tab-btn" onclick="switchTab('quiz', this)">🧠 クイズ</button>
 </div>
 
 <!-- ===== 図鑑モード ===== -->
@@ -618,69 +730,38 @@
       </div>
     </div>
 
-    <!-- 説明カード一覧 -->
-    <p class="cards-title">↓ クリックすると上のUIでハイライト表示されるよ</p>
-    <div class="cards-grid">
-      <div class="card" id="card-new-conv" onclick="highlightCard('new-conv')">
-        <div class="card-en">New conversation</div>
-        <div class="card-ja">新しい会話</div>
-        <div class="card-desc">今の会話を終わらせて新しく始める。過去の会話は履歴に保存される。</div>
+    <!-- 検索・カテゴリ絞り込み -->
+    <div class="guide-tools">
+      <input type="text" class="search-box" id="search-box" placeholder="🔍 用語を検索（例: モデル, token, MCP）" oninput="renderCards()">
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <!-- 説明カード一覧（ENTRIES から自動生成） -->
+    <p class="cards-title">↓ タップすると上のUIでハイライト表示されるよ</p>
+    <div class="cards-grid" id="cards-grid"></div>
+  </div>
+</div>
+
+<!-- ===== 暗記カードモード ===== -->
+<div id="panel-flash" class="panel">
+  <div class="flash-container">
+    <p class="flash-intro">カードをタップすると裏返って答えが見えるよ！</p>
+    <div class="flash-progress" id="flash-progress">1 / 1</div>
+    <div class="flash-card" id="flash-card" onclick="flipFlash()">
+      <div class="flash-inner">
+        <div class="flash-face flash-front">
+          <div class="flash-front-en" id="flash-en"></div>
+          <div class="flash-hint">タップして答えを見る 👆</div>
+        </div>
+        <div class="flash-face flash-back">
+          <div class="flash-back-ja" id="flash-ja"></div>
+          <div class="flash-back-desc" id="flash-desc"></div>
+        </div>
       </div>
-      <div class="card" id="card-model" onclick="highlightCard('model')">
-        <div class="card-en">Model selector</div>
-        <div class="card-ja">モデル選択</div>
-        <div class="card-desc">Opus（最高品質）/ Sonnet（バランス）/ Haiku（軽量・速い）から選ぶ。</div>
-      </div>
-      <div class="card" id="card-auto-approve" onclick="highlightCard('auto-approve')">
-        <div class="card-en">Auto-approve</div>
-        <div class="card-ja">自動承認設定</div>
-        <div class="card-desc">Claudeがファイルを編集するたびに確認するか、自動でOKにするかを切り替える。</div>
-      </div>
-      <div class="card" id="card-slash" onclick="highlightCard('slash')">
-        <div class="card-en">/commands</div>
-        <div class="card-ja">スラッシュコマンド</div>
-        <div class="card-desc">「/」を入力すると使える特別なコマンド群。/help, /clear, /model など。</div>
-      </div>
-      <div class="card" id="card-at" onclick="highlightCard('at')">
-        <div class="card-en">@ mentions</div>
-        <div class="card-ja">ファイル・URL参照</div>
-        <div class="card-desc">「@」のあとにファイル名やURLを入力して、その内容をClaudeに読ませる。</div>
-      </div>
-      <div class="card" id="card-hash" onclick="highlightCard('hash')">
-        <div class="card-en"># (files)</div>
-        <div class="card-ja">ファイル検索参照</div>
-        <div class="card-desc">「#」でプロジェクト内ファイルを検索して参照できる。ファイル限定版の@。</div>
-      </div>
-      <div class="card" id="card-input" onclick="highlightCard('input')">
-        <div class="card-en">Input box</div>
-        <div class="card-ja">メッセージ入力欄</div>
-        <div class="card-desc">Enterで送信、Shift+Enterで改行。/、@、#の特殊入力もここから。</div>
-      </div>
-      <div class="card" id="card-project" onclick="highlightCard('project')">
-        <div class="card-en">Projects</div>
-        <div class="card-ja">プロジェクト</div>
-        <div class="card-desc">作業するフォルダ（コードベース）。Claudeはここのファイルを読んで作業してくれる。</div>
-      </div>
-      <div class="card" id="card-memory" onclick="highlightCard('memory')">
-        <div class="card-en">Memory</div>
-        <div class="card-ja">メモリ管理</div>
-        <div class="card-desc">Claudeに覚えさせたい情報を管理する。好みや繰り返しのルールなどを記憶させられる。</div>
-      </div>
-      <div class="card" id="card-settings" onclick="highlightCard('settings')">
-        <div class="card-en">Settings</div>
-        <div class="card-ja">設定</div>
-        <div class="card-desc">テーマ、キーボードショートカット、APIキーなどの各種設定を変更する画面。</div>
-      </div>
-      <div class="card" id="card-history" onclick="highlightCard('history')">
-        <div class="card-en">Conversation history</div>
-        <div class="card-ja">会話の履歴</div>
-        <div class="card-desc">過去の会話が一覧で見られる。クリックすると続きから再開できる。</div>
-      </div>
-      <div class="card" id="card-statusbar" onclick="highlightCard('statusbar')">
-        <div class="card-en">Status bar</div>
-        <div class="card-ja">ステータスバー</div>
-        <div class="card-desc">使用トークン数、プロジェクト名、承認したツール数などの現在の状態を表示する帯。</div>
-      </div>
+    </div>
+    <div class="flash-controls">
+      <button class="flash-btn" onclick="shuffleFlash(event)">🔀 シャッフル</button>
+      <button class="flash-btn primary" onclick="nextFlash(event)">次のカード →</button>
     </div>
   </div>
 </div>
@@ -688,7 +769,19 @@
 <!-- ===== クイズモード ===== -->
 <div id="panel-quiz" class="panel">
   <div class="quiz-container">
-    <div id="quiz-game">
+    <!-- レベル選択 -->
+    <div id="quiz-level" class="level-select">
+      <h2>クイズのレベルを選んでね</h2>
+      <p>自信のないところから挑戦してみよう！</p>
+      <div class="level-btns">
+        <button class="level-btn" onclick="startQuiz(1)">🟢 初級<span class="lv-sub">まずはここから・基本のボタン</span></button>
+        <button class="level-btn" onclick="startQuiz(2)">🟡 中級<span class="lv-sub">スラッシュコマンドや設定など</span></button>
+        <button class="level-btn" onclick="startQuiz(3)">🔴 上級<span class="lv-sub">MCP・サブエージェントなど</span></button>
+        <button class="level-btn" onclick="startQuiz(0)">⭐ 全部まとめて<span class="lv-sub">すべての問題からランダム</span></button>
+      </div>
+    </div>
+
+    <div id="quiz-game" style="display:none;">
       <div class="quiz-header">
         <span class="quiz-progress" id="q-progress">問題 1 / 12</span>
         <span class="quiz-score" id="q-score">スコア: 0</span>
@@ -710,14 +803,111 @@
         <div class="result-emoji" id="r-emoji">🎉</div>
         <div class="result-score" id="r-score"></div>
         <div class="result-msg" id="r-msg"></div>
-        <button class="result-retry-btn" onclick="startQuiz()">もう一度チャレンジ！</button>
+        <button class="result-review-btn" id="r-review" onclick="reviewWrong()" style="display:none;"></button>
+        <button class="result-retry-btn" onclick="backToLevel()">レベル選択に戻る</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// ===== 図鑑 =====
+// ===== 用語データ（図鑑カード・暗記カード・検索 共通の元データ） =====
+const ENTRIES = [
+  { id:'new-conv', en:'New conversation', ja:'新しい会話', cat:'基本',
+    desc:'今の会話を終わらせて新しく始める。過去の会話は履歴に保存される。' },
+  { id:'input', en:'Input box', ja:'メッセージ入力欄', cat:'基本',
+    desc:'Enterで送信、Shift+Enterで改行。/、@、#の特殊入力もここから。' },
+  { id:'history', en:'Conversation history', ja:'会話の履歴', cat:'基本',
+    desc:'過去の会話が一覧で見られる。タップすると続きから再開できる。' },
+  { id:'statusbar', en:'Status bar', ja:'ステータスバー', cat:'基本',
+    desc:'使用トークン数、プロジェクト名、承認したツール数などの現在の状態を表示する帯。' },
+  { id:'terminal-app', en:'Terminal / Desktop', ja:'ターミナル版とデスクトップ版', cat:'基本',
+    desc:'Claude Codeには黒い画面のターミナル版と、ウィンドウのデスクトップアプリ版がある。中身（機能）は同じ。' },
+  { id:'model', en:'Model selector', ja:'モデル選択', cat:'モデル',
+    desc:'Opus（最高品質）/ Sonnet（バランス）/ Haiku（軽量・速い）から選ぶ。' },
+  { id:'thinking', en:'Extended thinking', ja:'拡張思考', cat:'モデル',
+    desc:'「考えて」などで思考を深めるモード。答える前にじっくり推論し、難しい問題で精度が上がる。' },
+  { id:'slash', en:'/commands', ja:'スラッシュコマンド', cat:'入力',
+    desc:'「/」を入力すると使える特別なコマンド群。/help, /clear, /model など。' },
+  { id:'at', en:'@ mentions', ja:'ファイル・URL参照', cat:'入力',
+    desc:'「@」のあとにファイル名やURLを入力して、その内容をClaudeに読ませる。' },
+  { id:'hash', en:'# (files)', ja:'ファイル検索参照', cat:'入力',
+    desc:'「#」でプロジェクト内ファイルを検索して参照できる。ファイル限定版の@。' },
+  { id:'cmd-clear', en:'/clear', ja:'会話のリセット', cat:'入力',
+    desc:'会話の文脈をリセットして、まっさらな状態から始めるコマンド。話が長くなって混乱したときに。' },
+  { id:'cmd-init', en:'/init', ja:'説明書を自動作成', cat:'入力',
+    desc:'プロジェクトの説明書（CLAUDE.md）を自動作成するコマンド。Claudeがそのプロジェクトを理解しやすくなる。' },
+  { id:'project', en:'Projects', ja:'プロジェクト', cat:'ファイル',
+    desc:'作業するフォルダ（コードベース）。Claudeはここのファイルを読んで作業してくれる。' },
+  { id:'diff', en:'Diff (changes)', ja:'変更差分', cat:'ファイル',
+    desc:'Claudeがコードをどう書き換えたかを、追加=緑 / 削除=赤 で見せる表示。' },
+  { id:'checkpoint', en:'Checkpoint / Rewind', ja:'チェックポイント（巻き戻し）', cat:'ファイル',
+    desc:'作業の途中状態を記録し、前の状態に戻せる機能。失敗しても安心して試せる。' },
+  { id:'auto-approve', en:'Auto-approve', ja:'自動承認設定', cat:'設定',
+    desc:'Claudeがファイルを編集するたびに確認するか、自動でOKにするかを切り替える。' },
+  { id:'permission', en:'Permission mode', ja:'許可モード', cat:'設定',
+    desc:'ツール実行の許可レベル。毎回確認 / 自動許可 / プランのみ などを切り替える。安全性と手間のバランス。' },
+  { id:'memory', en:'Memory', ja:'メモリ管理', cat:'設定',
+    desc:'Claudeに覚えさせたい情報を管理する。好みや繰り返しのルールなどを記憶させられる。' },
+  { id:'settings', en:'Settings', ja:'設定', cat:'設定',
+    desc:'テーマ、キーボードショートカット、APIキーなどの各種設定を変更する画面。' },
+  { id:'plan-mode', en:'Plan mode', ja:'プランモード', cat:'高度',
+    desc:'実行前に計画を立てて見せ、承認してから作業を始めるモード。いきなり変更されるのが不安なときに安全。' },
+  { id:'mcp', en:'MCP / Connectors', ja:'コネクタ（外部連携）', cat:'高度',
+    desc:'外部サービス（Gmail・Slack・GitHubなど）とClaudeをつなぐ仕組み。追加すると情報を読んだり操作できる。' },
+  { id:'subagent', en:'Subagents', ja:'サブエージェント', cat:'高度',
+    desc:'別の小さなAIに調査や作業を任せる機能。大きな仕事を分担して効率よく進められる。' },
+  { id:'hooks', en:'Hooks', ja:'フック', cat:'高度',
+    desc:'特定のタイミングで自動的にコマンドを実行する設定。「保存したら自動でテスト」など。' },
+  { id:'skills', en:'Skills', ja:'スキル', cat:'高度',
+    desc:'特定の作業の手順をまとめた拡張機能。/で呼び出して専門的な作業（資料作成など）を任せられる。' },
+  { id:'todo', en:'Todo / Tasks', ja:'タスク一覧', cat:'高度',
+    desc:'大きな作業を小さなステップに分けて進捗を見せる一覧。今どこまで進んだかが分かる。' }
+];
+
+const CATEGORIES = ['すべて','基本','入力','モデル','ファイル','設定','高度'];
+let activeCat = 'すべて';
+
+// ===== 図鑑：カード生成・検索・カテゴリ絞り込み =====
+function renderChips() {
+  const wrap = document.getElementById('chips');
+  wrap.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (cat === activeCat ? ' active' : '');
+    b.textContent = cat;
+    b.onclick = () => { activeCat = cat; renderChips(); renderCards(); };
+    wrap.appendChild(b);
+  });
+}
+
+function renderCards() {
+  const grid = document.getElementById('cards-grid');
+  const kw = (document.getElementById('search-box').value || '').trim().toLowerCase();
+  const list = ENTRIES.filter(e => {
+    const catOk = activeCat === 'すべて' || e.cat === activeCat;
+    const kwOk = !kw || (e.en + e.ja + e.desc + e.cat).toLowerCase().includes(kw);
+    return catOk && kwOk;
+  });
+  grid.innerHTML = '';
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="no-result">該当する用語が見つかりませんでした。</div>';
+    return;
+  }
+  list.forEach(e => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.id = 'card-' + e.id;
+    card.onclick = () => highlightCard(e.id);
+    card.innerHTML =
+      `<div class="card-en">${e.en}</div>` +
+      `<div class="card-ja">${e.ja}</div>` +
+      `<div class="card-desc">${e.desc}</div>` +
+      `<div class="card-cat">${e.cat}</div>`;
+    grid.appendChild(card);
+  });
+}
+
 function highlightCard(id) {
   document.querySelectorAll('.hl').forEach(el => el.classList.remove('highlighted'));
   document.querySelectorAll('.card').forEach(el => el.classList.remove('highlighted'));
@@ -726,25 +916,62 @@ function highlightCard(id) {
   const card = document.getElementById('card-' + id);
   if (card) {
     card.classList.add('highlighted');
-    // スマホ（≤480px）はタップで下に説明が固定表示されるので、カードへの自動スクロールはしない
     if (window.innerWidth > 480) {
       card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
 }
 
+// ===== 暗記カード（フラッシュカード） =====
+let flashList = [];
+let flashIdx = 0;
+let flashReady = false;
+
+function initFlash() {
+  flashList = shuffle(ENTRIES);
+  flashIdx = 0;
+  flashReady = true;
+  renderFlash();
+}
+function renderFlash() {
+  const e = flashList[flashIdx];
+  document.getElementById('flash-card').classList.remove('flipped');
+  document.getElementById('flash-en').textContent = e.en;
+  document.getElementById('flash-ja').textContent = e.ja;
+  document.getElementById('flash-desc').textContent = e.desc;
+  document.getElementById('flash-progress').textContent = `${flashIdx + 1} / ${flashList.length}`;
+}
+function flipFlash() {
+  document.getElementById('flash-card').classList.toggle('flipped');
+}
+function nextFlash(ev) {
+  if (ev) ev.stopPropagation();
+  flashIdx = (flashIdx + 1) % flashList.length;
+  renderFlash();
+}
+function shuffleFlash(ev) {
+  if (ev) ev.stopPropagation();
+  flashList = shuffle(ENTRIES);
+  flashIdx = 0;
+  renderFlash();
+}
+
 // ===== タブ切り替え =====
-function switchTab(tab) {
+function switchTab(tab, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + tab).classList.add('active');
-  event.target.classList.add('active');
-  if (tab === 'quiz') startQuiz();
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+  if (tab === 'flash' && !flashReady) initFlash();
+  if (tab === 'quiz') backToLevel();
 }
 
-// ===== クイズデータ =====
+// ===== クイズデータ（level: 1=初級 / 2=中級 / 3=上級） =====
 const QUIZ_DATA = [
+  // ---------- 初級 ----------
   {
+    level: 1,
     q: '「New conversation」ボタンの機能は？',
     sub: 'サイドバーの上部にある鉛筆マークのボタン',
     choices: ['新しい会話を始める', 'ファイルを新規作成する', '設定画面を開く', 'モデルを切り替える'],
@@ -753,6 +980,7 @@ const QUIZ_DATA = [
     wrongExplain: '❌ 不正解。New conversation（新しい会話）は、今の会話を終わらせて新しい会話をゼロから始めるボタンです。'
   },
   {
+    level: 1,
     q: '「claude-sonnet-4 ▾」と表示されているボタンをクリックすると？',
     sub: 'ツールバーに表示されているモデル名',
     choices: ['AIモデルを切り替える選択肢が出る', '音声入力が始まる', 'コードの補完候補が出る', 'チャット履歴が消える'],
@@ -761,22 +989,7 @@ const QUIZ_DATA = [
     wrongExplain: '❌ 不正解。「claude-sonnet-4 ▾」はModel selector（モデル選択）で、クリックするとOpus/Sonnet/Haikuなどのモデルを切り替えられます。'
   },
   {
-    q: '入力欄で「/」を入力すると何が起きる？',
-    sub: 'メッセージの先頭に「/」を入力した場合',
-    choices: ['スラッシュコマンドの一覧が出る', 'ファイルの検索画面が出る', '会話がリセットされる', 'URLの入力欄が出る'],
-    answer: 0,
-    explain: '✅ 正解！「/」はスラッシュコマンドのトリガーです。/help、/clear、/modelなど様々なコマンドを使えます。',
-    wrongExplain: '❌ 不正解。入力欄で「/」を入力すると、/help や /clear などのスラッシュコマンド一覧が表示されます。'
-  },
-  {
-    q: '入力欄で「@」を入力すると何ができる？',
-    sub: 'メッセージ中に「@」を入力した場合',
-    choices: ['ファイルやURLをClaudeに参照させる', '特定のユーザーをメンションする', '絵文字の一覧が出る', 'コードブロックを挿入する'],
-    answer: 0,
-    explain: '✅ 正解！「@」のあとにファイル名やURLを入力すると、その内容をClaudeに読み込ませて会話に含めることができます。',
-    wrongExplain: '❌ 不正解。「@」はファイルやURLの参照に使います。@ファイル名 でそのファイルの中身をClaudeに読ませられます。'
-  },
-  {
+    level: 1,
     q: 'メッセージを送信せずに改行したい。どうする？',
     sub: 'Enterキーだけ押すと送信されてしまう',
     choices: ['Shift + Enter を押す', 'Ctrl + Enter を押す', 'Alt + Enter を押す', 'Tab キーを押す'],
@@ -785,46 +998,63 @@ const QUIZ_DATA = [
     wrongExplain: '❌ 不正解。Shift+Enterで改行できます。Enterだけだとメッセージが送信されてしまいます。'
   },
   {
-    q: '「Auto-approve」の設定を変えると、何が変わる？',
-    sub: 'ツールバーにある設定項目',
-    choices: ['Claudeがファイルを編集するときに確認するかどうか', 'モデルが自動で切り替わるかどうか', '会話が自動保存されるかどうか', 'テーマが自動で変わるかどうか'],
-    answer: 0,
-    explain: '✅ 正解！Auto-approveをオンにするとClaude がファイル編集などのツールを実行するとき、毎回確認なしで自動的に許可します。',
-    wrongExplain: '❌ 不正解。Auto-approveはClaude がツール（ファイル編集、コマンド実行など）を使うときに毎回確認するか自動でOKにするかの設定です。'
-  },
-  {
-    q: '「Memory」とは何を管理する場所？',
-    sub: 'サイドバー下部にある項目',
-    choices: ['Claudeに覚えさせたい情報', 'PCのメモリ使用量', 'チャット履歴のバックアップ', 'コードのキャッシュ'],
-    answer: 0,
-    explain: '✅ 正解！Memoryは「Claudeに覚えておいてほしいこと」を管理する場所です。ここに記録した情報は次の会話でも使われます。',
-    wrongExplain: '❌ 不正解。MemoryはClaude に覚えさせたい情報（好みや作業ルールなど）を管理する場所です。パソコンのRAMとは関係ありません。'
-  },
-  {
+    level: 1,
     q: '「Projects」に表示されているフォルダ名を選ぶと？',
     sub: 'サイドバーのProjectsセクション',
     choices: ['そのフォルダをClaudeの作業対象として設定する', 'フォルダを削除する', 'ファイルをアップロードする', 'プロジェクトをGitHubに公開する'],
     answer: 0,
     explain: '✅ 正解！Projectsで選んだフォルダがClaudeの作業対象（コードベース）になります。Claudeはそのフォルダのファイルを読んで助けてくれます。',
-    wrongExplain: '❌ 不正解。Projectsでフォルダを選ぶと、そのフォルダがClaudeの作業対象になります。Claudeはそのフォルダのファイルを読めるようになります。'
+    wrongExplain: '❌ 不正解。Projectsでフォルダを選ぶと、そのフォルダがClaudeの作業対象になります。'
   },
   {
-    q: 'ステータスバーの「tokens: 1,234」が示すのは？',
-    sub: '画面下部のステータスバーに表示される数字',
-    choices: ['この会話で使ったトークン（文字数の単位）の数', 'ファイルの行数', 'エラーの件数', 'Claudeのレスポンス時間（ms）'],
-    answer: 0,
-    explain: '✅ 正解！トークンはAIが処理する文字・単語の単位です。使いすぎると上限に達して会話が続けられなくなることもあります。',
-    wrongExplain: '❌ 不正解。tokensはAIが処理した「トークン」の数です。日本語は1文字が複数トークンになることもあります。使いすぎると上限に達します。'
-  },
-  {
-    q: '「Settings」を開くと何ができる？',
+    level: 1,
+    q: 'テーマやキーボードショートカットを変更したい。どこを開く？',
     sub: 'サイドバー下部の歯車アイコン',
-    choices: ['テーマやキーボードショートカットなどを変更できる', 'コードを自動フォーマットできる', 'AIの学習データを送信できる', 'ファイルをZipに圧縮できる'],
+    choices: ['Settings（設定）', 'Memory（メモリ）', 'Projects（プロジェクト）', 'New conversation'],
     answer: 0,
-    explain: '✅ 正解！Settingsではテーマ（ダーク/ライト）、キーボードショートカット、APIキーの設定などができます。',
-    wrongExplain: '❌ 不正解。Settingsはテーマ、キーボードショートカット、APIキーなどの各種設定を変更する画面です。'
+    explain: '✅ 正解！Settings（設定）でテーマ・ショートカット・APIキーなどを変更できます。',
+    wrongExplain: '❌ 不正解。テーマやショートカットの変更はSettings（設定）画面で行います。'
   },
   {
+    level: 1,
+    q: '会話の履歴（History）の項目をタップすると？',
+    sub: 'サイドバーのHistoryセクション',
+    choices: ['その過去の会話を続きから再開できる', '会話が完全に削除される', '新しいプロジェクトが作られる', 'アプリが再起動する'],
+    answer: 0,
+    explain: '✅ 正解！履歴をタップすると、その過去の会話を続きから再開できます。',
+    wrongExplain: '❌ 不正解。Historyは過去の会話の記録で、タップすると続きから再開できます。削除ではありません。'
+  },
+  {
+    level: 1,
+    q: 'Claude Codeの「ターミナル版」と「デスクトップアプリ版」の関係は？',
+    sub: '2つの使い方がある',
+    choices: ['見た目が違うだけで、機能は基本的に同じ', 'ターミナル版の方が機能が10倍多い', 'デスクトップ版は有料専用', '中身がまったく別のアプリ'],
+    answer: 0,
+    explain: '✅ 正解！黒い画面のターミナル版とウィンドウのデスクトップ版は、見た目が違うだけで中身（機能）は同じです。',
+    wrongExplain: '❌ 不正解。ターミナル版とデスクトップ版は見た目が違うだけで、機能は基本的に同じです。'
+  },
+
+  // ---------- 中級 ----------
+  {
+    level: 2,
+    q: '入力欄で「/」を入力すると何が起きる？',
+    sub: 'メッセージの先頭に「/」を入力した場合',
+    choices: ['スラッシュコマンドの一覧が出る', 'ファイルの検索画面が出る', '会話がリセットされる', 'URLの入力欄が出る'],
+    answer: 0,
+    explain: '✅ 正解！「/」はスラッシュコマンドのトリガーです。/help、/clear、/modelなど様々なコマンドを使えます。',
+    wrongExplain: '❌ 不正解。入力欄で「/」を入力すると、/help や /clear などのスラッシュコマンド一覧が表示されます。'
+  },
+  {
+    level: 2,
+    q: '入力欄で「@」を入力すると何ができる？',
+    sub: 'メッセージ中に「@」を入力した場合',
+    choices: ['ファイルやURLをClaudeに参照させる', '特定のユーザーをメンションする', '絵文字の一覧が出る', 'コードブロックを挿入する'],
+    answer: 0,
+    explain: '✅ 正解！「@」のあとにファイル名やURLを入力すると、その内容をClaudeに読み込ませて会話に含めることができます。',
+    wrongExplain: '❌ 不正解。「@」はファイルやURLの参照に使います。@ファイル名 でそのファイルの中身をClaudeに読ませられます。'
+  },
+  {
+    level: 2,
     q: '「#」を入力欄で押すと何ができる？',
     sub: '「@」と似ているが少し違う',
     choices: ['プロジェクト内のファイルを検索して参照する', 'コメントを挿入する', 'ハッシュタグを付ける', 'コードブロックを開始する'],
@@ -833,28 +1063,186 @@ const QUIZ_DATA = [
     wrongExplain: '❌ 不正解。「#」はプロジェクト内のファイルを検索して参照するためのトリガーです。ファイル限定の@のようなものです。'
   },
   {
+    level: 2,
+    q: '「Auto-approve」の設定を変えると、何が変わる？',
+    sub: 'ツールバーにある設定項目',
+    choices: ['Claudeがファイルを編集するときに確認するかどうか', 'モデルが自動で切り替わるかどうか', '会話が自動保存されるかどうか', 'テーマが自動で変わるかどうか'],
+    answer: 0,
+    explain: '✅ 正解！Auto-approveをオンにするとClaudeがファイル編集などのツールを実行するとき、毎回確認なしで自動的に許可します。',
+    wrongExplain: '❌ 不正解。Auto-approveはClaudeがツール（ファイル編集、コマンド実行など）を使うときに毎回確認するか自動でOKにするかの設定です。'
+  },
+  {
+    level: 2,
+    q: '「Memory」とは何を管理する場所？',
+    sub: 'サイドバー下部にある項目',
+    choices: ['Claudeに覚えさせたい情報', 'PCのメモリ使用量', 'チャット履歴のバックアップ', 'コードのキャッシュ'],
+    answer: 0,
+    explain: '✅ 正解！Memoryは「Claudeに覚えておいてほしいこと」を管理する場所です。ここに記録した情報は次の会話でも使われます。',
+    wrongExplain: '❌ 不正解。MemoryはClaudeに覚えさせたい情報（好みや作業ルールなど）を管理する場所です。パソコンのRAMとは関係ありません。'
+  },
+  {
+    level: 2,
+    q: 'ステータスバーの「tokens: 1,234」が示すのは？',
+    sub: '画面下部のステータスバーに表示される数字',
+    choices: ['この会話で使ったトークン（文字数の単位）の数', 'ファイルの行数', 'エラーの件数', 'Claudeのレスポンス時間（ms）'],
+    answer: 0,
+    explain: '✅ 正解！トークンはAIが処理する文字・単語の単位です。使いすぎると上限に達して会話が続けられなくなることもあります。',
+    wrongExplain: '❌ 不正解。tokensはAIが処理した「トークン」の数です。日本語は1文字が複数トークンになることもあります。'
+  },
+  {
+    level: 2,
     q: 'OpusとHaikuを比べると、どちらが速く回答する？',
     sub: 'Claudeのモデルに関する問題',
     choices: ['Haiku（軽量・高速モデル）', 'Opus（最高性能モデル）', '両方まったく同じ速さ', 'ネット回線によって変わる'],
     answer: 0,
     explain: '✅ 正解！Haikuは軽量・高速モデルです。Opusは最高品質ですが速度は遅め。Sonnetはその中間のバランス型です。',
     wrongExplain: '❌ 不正解。HaikuはClaudeの中で最も軽量・高速なモデルです。Opusは最高品質ですが少し遅めです。'
+  },
+  {
+    level: 2,
+    q: '「/clear」コマンドは何をする？',
+    sub: 'スラッシュコマンドの一つ',
+    choices: ['会話の文脈をリセットして最初から始める', 'ファイルをすべて削除する', 'アプリを終了する', 'プロジェクトを切り替える'],
+    answer: 0,
+    explain: '✅ 正解！/clearは会話の文脈をリセットするコマンド。話が長くなって混乱したときに新たな気持ちで再開できます。',
+    wrongExplain: '❌ 不正解。/clearは会話の文脈をリセットするコマンドです。ファイルが消えるわけではありません。'
+  },
+  {
+    level: 2,
+    q: '「/init」コマンドを実行すると何が作られる？',
+    sub: 'プロジェクトを始めるときに便利',
+    choices: ['プロジェクトの説明書（CLAUDE.md）', '新しいGitリポジトリ', 'スクリーンショット', 'バックアップZip'],
+    answer: 0,
+    explain: '✅ 正解！/initはCLAUDE.md（プロジェクト説明書）を自動作成します。Claudeがそのプロジェクトを理解しやすくなります。',
+    wrongExplain: '❌ 不正解。/initはCLAUDE.md（プロジェクトの説明書）を自動作成するコマンドです。'
+  },
+  {
+    level: 2,
+    q: '変更差分（Diff）で「緑」と「赤」は何を表す？',
+    sub: 'Claudeがコードを書き換えたときの表示',
+    choices: ['緑=追加した行 / 赤=削除した行', '緑=エラー / 赤=警告', '緑=保存済み / 赤=未保存', '緑=自分 / 赤=Claude'],
+    answer: 0,
+    explain: '✅ 正解！差分表示では緑が追加した行、赤が削除した行を表します。何がどう変わったか一目で分かります。',
+    wrongExplain: '❌ 不正解。Diff（差分）の緑は「追加した行」、赤は「削除した行」を表します。'
+  },
+  {
+    level: 2,
+    q: 'タスク一覧（Todo）の役割は？',
+    sub: '作業中に表示されるリスト',
+    choices: ['大きな作業を小さなステップに分け進捗を見せる', '今日の予定を管理するカレンダー', '買い物リスト', 'エラーの一覧'],
+    answer: 0,
+    explain: '✅ 正解！Todoは大きな作業を小さなステップに分けて、今どこまで進んだかを見せてくれます。',
+    wrongExplain: '❌ 不正解。Todo（タスク一覧）は作業を小さなステップに分けて進捗を見せる機能です。'
+  },
+
+  // ---------- 上級 ----------
+  {
+    level: 3,
+    q: 'MCP（コネクタ）とは何をする仕組み？',
+    sub: '画面に「コネクタ」という項目がある',
+    choices: ['外部サービスとClaudeをつなぐ仕組み', '通信を暗号化するツール', 'モデルを高速化する設定', '画面の色を変える機能'],
+    answer: 0,
+    explain: '✅ 正解！MCP（コネクタ）はGmailやSlack、GitHubなどの外部サービスとClaudeをつなぐ仕組みです。',
+    wrongExplain: '❌ 不正解。MCP（コネクタ）は外部サービス（Gmail・Slackなど）とClaudeをつなぐ仕組みです。'
+  },
+  {
+    level: 3,
+    q: '「サブエージェント」とは？',
+    sub: '大きな作業を進めるときの機能',
+    choices: ['別の小さなAIに作業を分担させる機能', 'バックアップを取る機能', 'もう一人のユーザーを招待する機能', '音声で操作する機能'],
+    answer: 0,
+    explain: '✅ 正解！サブエージェントは別の小さなAIに調査や作業を任せる機能。大きな仕事を分担して効率よく進められます。',
+    wrongExplain: '❌ 不正解。サブエージェントは別の小さなAIに作業を分担させる機能です。'
+  },
+  {
+    level: 3,
+    q: '「フック（hooks）」とは？',
+    sub: '自動化のための設定',
+    choices: ['特定のタイミングで自動的にコマンドを実行する設定', 'ファイルを釣り上げる機能', '会話を録音する機能', '画面をフックして拡大する機能'],
+    answer: 0,
+    explain: '✅ 正解！フックは「保存したら自動でテスト」のように、特定のタイミングで自動的にコマンドを実行する設定です。',
+    wrongExplain: '❌ 不正解。フック（hooks）は特定のタイミングで自動的にコマンドを実行する設定です。'
+  },
+  {
+    level: 3,
+    q: 'プランモードの一番のメリットは？',
+    sub: '「Plan mode」という表示',
+    choices: ['実行前に計画を確認・承認できて安全', '回答が2倍速くなる', '無料で使える', '英語が日本語になる'],
+    answer: 0,
+    explain: '✅ 正解！プランモードは実行前に計画を立てて見せ、承認してから作業するので、いきなり変更される心配がなく安全です。',
+    wrongExplain: '❌ 不正解。プランモードの利点は、実行前に計画を確認・承認できる「安全さ」です。'
+  },
+  {
+    level: 3,
+    q: 'チェックポイント（巻き戻し）機能の役割は？',
+    sub: '作業の安全装置',
+    choices: ['前の状態に戻せるので失敗しても安心', '時間を計測する', '自動で課金される', '画面を録画する'],
+    answer: 0,
+    explain: '✅ 正解！チェックポイントは作業の途中状態を記録し、前の状態に戻せる機能。失敗しても安心して試せます。',
+    wrongExplain: '❌ 不正解。チェックポイント（巻き戻し）は、前の状態に戻せる安全機能です。'
+  },
+  {
+    level: 3,
+    q: '拡張思考（thinking）を使うと何が変わる？',
+    sub: '「考えて」などと伝えると有効になる',
+    choices: ['答える前にじっくり推論し、難問の精度が上がる', '文字が大きくなる', '通信量が減る', 'モデルが無料になる'],
+    answer: 0,
+    explain: '✅ 正解！拡張思考は答える前にじっくり推論するモード。難しい問題で回答の精度が上がります。',
+    wrongExplain: '❌ 不正解。拡張思考（thinking）は答える前にじっくり推論し、難しい問題の精度を上げる機能です。'
+  },
+  {
+    level: 3,
+    q: '「スキル（skill）」とは？',
+    sub: '/ で呼び出せる',
+    choices: ['特定の作業手順をまとめた拡張機能', 'Claudeのレベル', '課金プランの名前', 'キーボードの早打ち練習'],
+    answer: 0,
+    explain: '✅ 正解！スキルは特定の作業の手順をまとめた拡張機能。/で呼び出して専門的な作業（資料作成など）を任せられます。',
+    wrongExplain: '❌ 不正解。スキルは作業手順をまとめた拡張機能で、/で呼び出して使います。'
   }
 ];
 
 let currentQ = 0;
 let score = 0;
-let shuffled = [];
+let quizSet = [];
+let wrongList = [];
 let answered = false;
+const LEVEL_LABEL = { 1: '初級', 2: '中級', 3: '上級' };
 
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-function startQuiz() {
-  shuffled = shuffle(QUIZ_DATA);
+function buzz(pattern) {
+  if (navigator.vibrate) { try { navigator.vibrate(pattern); } catch (e) {} }
+}
+
+// レベル選択画面に戻る
+function backToLevel() {
+  document.getElementById('quiz-level').style.display = 'block';
+  document.getElementById('quiz-game').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'none';
+}
+
+// level: 0=全部 / 1=初級 / 2=中級 / 3=上級
+function startQuiz(level) {
+  const pool = (level === 0) ? QUIZ_DATA : QUIZ_DATA.filter(q => q.level === level);
+  quizSet = shuffle(pool);
   currentQ = 0;
   score = 0;
+  wrongList = [];
+  answered = false;
+  document.getElementById('quiz-level').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('quiz-game').style.display = 'block';
+  renderQuestion();
+}
+
+// 間違えた問題だけ復習
+function reviewWrong() {
+  quizSet = shuffle(wrongList);
+  currentQ = 0;
+  score = 0;
+  wrongList = [];
   answered = false;
   document.getElementById('quiz-result').style.display = 'none';
   document.getElementById('quiz-game').style.display = 'block';
@@ -863,12 +1251,14 @@ function startQuiz() {
 
 function renderQuestion() {
   answered = false;
-  const q = shuffled[currentQ];
-  const total = shuffled.length;
+  const q = quizSet[currentQ];
+  const total = quizSet.length;
+  const lvTag = q.level ? `<span class="q-level-tag">${LEVEL_LABEL[q.level] || ''}</span>` : '';
 
   document.getElementById('q-progress').textContent = `問題 ${currentQ + 1} / ${total}`;
   document.getElementById('q-score').textContent = `スコア: ${score}`;
   document.getElementById('q-bar').style.width = `${(currentQ / total) * 100}%`;
+  document.querySelector('.quiz-q-label').innerHTML = `❓ 次のUI／機能は何をするもの？${lvTag}`;
   document.getElementById('q-text').textContent = q.q;
   document.getElementById('q-sub').textContent = q.sub || '';
   document.getElementById('q-feedback').className = 'quiz-feedback';
@@ -884,15 +1274,16 @@ function renderQuestion() {
     btn.className = 'choice-btn';
     btn.textContent = q.choices[i];
     btn.dataset.idx = i;
-    btn.onclick = () => selectAnswer(i, q.answer, q.explain, q.wrongExplain);
+    btn.onclick = () => selectAnswer(i, q);
     choicesEl.appendChild(btn);
   });
 }
 
-function selectAnswer(chosen, correct, explainCorrect, explainWrong) {
+function selectAnswer(chosen, q) {
   if (answered) return;
   answered = true;
 
+  const correct = q.answer;
   const btns = document.querySelectorAll('.choice-btn');
   const feedback = document.getElementById('q-feedback');
 
@@ -904,28 +1295,31 @@ function selectAnswer(chosen, correct, explainCorrect, explainWrong) {
 
   if (chosen === correct) {
     score++;
+    buzz(35);
     document.querySelectorAll('.choice-btn').forEach(btn => {
       if (parseInt(btn.dataset.idx) === chosen) btn.classList.add('correct');
     });
     feedback.className = 'quiz-feedback correct';
-    feedback.textContent = explainCorrect;
+    feedback.textContent = q.explain;
   } else {
+    buzz([40, 50, 40]);
+    wrongList.push(q);
     document.querySelectorAll('.choice-btn').forEach(btn => {
       if (parseInt(btn.dataset.idx) === chosen) btn.classList.add('wrong');
     });
     feedback.className = 'quiz-feedback wrong';
-    feedback.textContent = explainWrong;
+    feedback.textContent = q.wrongExplain;
   }
 
   document.getElementById('q-score').textContent = `スコア: ${score}`;
   document.getElementById('q-next').style.display = 'block';
   document.getElementById('q-next').textContent =
-    currentQ + 1 < shuffled.length ? '次の問題 →' : '結果を見る 🎯';
+    currentQ + 1 < quizSet.length ? '次の問題 →' : '結果を見る 🎯';
 }
 
 function nextQuestion() {
   currentQ++;
-  if (currentQ >= shuffled.length) {
+  if (currentQ >= quizSet.length) {
     showResult();
   } else {
     renderQuestion();
@@ -935,20 +1329,29 @@ function nextQuestion() {
 function showResult() {
   document.getElementById('quiz-game').style.display = 'none';
   document.getElementById('quiz-result').style.display = 'block';
-  const total = shuffled.length;
+  const total = quizSet.length;
   const pct = Math.round((score / total) * 100);
   let emoji = '😢';
-  let msg = 'もう少し！図鑑モードで復習してみよう。';
+  let msg = 'もう少し！図鑑や暗記カードで復習してみよう。';
   if (pct >= 90) { emoji = '🏆'; msg = '完璧！Claude Code UIマスターです！'; }
   else if (pct >= 70) { emoji = '🎉'; msg = 'よくできました！あと少しで完璧！'; }
-  else if (pct >= 50) { emoji = '👍'; msg = '半分以上正解！図鑑で苦手を確認しよう。'; }
+  else if (pct >= 50) { emoji = '👍'; msg = '半分以上正解！苦手を復習しよう。'; }
   document.getElementById('r-emoji').textContent = emoji;
   document.getElementById('r-score').textContent = `${score} / ${total} 問正解（${pct}%）`;
   document.getElementById('r-msg').textContent = msg;
+
+  const reviewBtn = document.getElementById('r-review');
+  if (wrongList.length > 0) {
+    reviewBtn.style.display = 'block';
+    reviewBtn.textContent = `❌ 間違えた ${wrongList.length}問だけ復習`;
+  } else {
+    reviewBtn.style.display = 'none';
+  }
 }
 
-// 初期化
-startQuiz();
+// ===== 初期化 =====
+renderChips();
+renderCards();
 
 // ===== オフライン対応（サービスワーカー登録） =====
 if ('serviceWorker' in navigator) {
