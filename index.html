@@ -7,18 +7,18 @@
 
 <!-- PWA（ホーム画面アプリ）設定 -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1a1a1a">
+<meta name="theme-color" content="#ffffff">
 <meta name="mobile-web-app-capable" content="yes">
 <!-- iOS（iPhone）用 -->
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="CCガイド">
 <link rel="apple-touch-icon" href="icon-180.png">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: #1a1a1a;
-    color: #e0e0e0;
+    background: #ffffff;
+    color: #2b2620;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     min-height: 100vh;
     -webkit-text-size-adjust: 100%;
@@ -28,7 +28,7 @@
     text-align: center;
     padding: 20px;
     font-size: 1.4rem;
-    color: #d4a574;
+    color: #b8763d;
     letter-spacing: 1px;
   }
 
@@ -40,9 +40,9 @@
     margin-bottom: 24px;
   }
   .tab-btn {
-    background: #2a2a2a;
-    border: 1px solid #444;
-    color: #aaa;
+    background: #f7f5f2;
+    border: 1px solid #e3ddd3;
+    color: #8a8177;
     padding: 10px 28px;
     border-radius: 6px;
     cursor: pointer;
@@ -50,12 +50,12 @@
     transition: all 0.2s;
   }
   .tab-btn.active {
-    background: #d4a574;
-    color: #1a1a1a;
-    border-color: #d4a574;
+    background: #b8763d;
+    color: #ffffff;
+    border-color: #b8763d;
     font-weight: bold;
   }
-  .tab-btn:hover:not(.active) { border-color: #888; color: #ddd; }
+  .tab-btn:hover:not(.active) { border-color: #b8763d; color: #b8763d; }
 
   /* パネル */
   .panel { display: none; }
@@ -69,7 +69,7 @@
   }
   .guide-intro {
     text-align: center;
-    color: #888;
+    color: #8a8177;
     margin-bottom: 20px;
     font-size: 0.85rem;
   }
@@ -288,7 +288,7 @@
   /* 説明カード一覧 */
   .cards-title {
     font-size: 0.85rem;
-    color: #888;
+    color: #8a8177;
     margin-bottom: 12px;
     text-align: center;
   }
@@ -298,18 +298,19 @@
     gap: 12px;
   }
   .card {
-    background: #222;
-    border: 1px solid #333;
+    background: #ffffff;
+    border: 1px solid #e3ddd3;
     border-radius: 8px;
     padding: 14px;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(60, 40, 20, 0.04);
   }
-  .card:hover { border-color: #d4a574; }
-  .card.highlighted { border-color: #d4a574; background: #26211c; }
-  .card-en { font-size: 0.78rem; color: #d4a574; margin-bottom: 4px; font-weight: bold; }
-  .card-ja { font-size: 0.9rem; color: #ddd; margin-bottom: 6px; }
-  .card-desc { font-size: 0.78rem; color: #888; line-height: 1.5; }
+  .card:hover { border-color: #b8763d; box-shadow: 0 2px 8px rgba(60, 40, 20, 0.08); }
+  .card.highlighted { border-color: #b8763d; background: #fbf3ea; }
+  .card-en { font-size: 0.78rem; color: #b8763d; margin-bottom: 4px; font-weight: bold; }
+  .card-ja { font-size: 0.9rem; color: #2b2620; margin-bottom: 6px; font-weight: bold; }
+  .card-desc { font-size: 0.78rem; color: #8a8177; line-height: 1.5; }
 
   /* ===== クイズモード ===== */
   .quiz-container {
@@ -323,37 +324,37 @@
     align-items: center;
     margin-bottom: 20px;
   }
-  .quiz-progress { font-size: 0.85rem; color: #888; }
-  .quiz-score { font-size: 0.9rem; color: #d4a574; font-weight: bold; }
+  .quiz-progress { font-size: 0.85rem; color: #8a8177; }
+  .quiz-score { font-size: 0.9rem; color: #b8763d; font-weight: bold; }
   .quiz-progress-bar {
     height: 4px;
-    background: #2a2a2a;
+    background: #eee8de;
     border-radius: 2px;
     margin-bottom: 24px;
     overflow: hidden;
   }
   .quiz-progress-fill {
     height: 100%;
-    background: #d4a574;
+    background: #b8763d;
     border-radius: 2px;
     transition: width 0.4s;
   }
   .quiz-q-box {
-    background: #222;
-    border: 1px solid #3a3a3a;
+    background: #f7f5f2;
+    border: 1px solid #e3ddd3;
     border-radius: 10px;
     padding: 24px;
     margin-bottom: 20px;
   }
-  .quiz-q-label { font-size: 0.75rem; color: #888; margin-bottom: 8px; }
-  .quiz-q-text { font-size: 1.05rem; color: #e0e0e0; line-height: 1.6; }
-  .quiz-q-sub { font-size: 0.82rem; color: #aaa; margin-top: 6px; }
+  .quiz-q-label { font-size: 0.75rem; color: #8a8177; margin-bottom: 8px; }
+  .quiz-q-text { font-size: 1.05rem; color: #2b2620; line-height: 1.6; font-weight: bold; }
+  .quiz-q-sub { font-size: 0.82rem; color: #8a8177; margin-top: 6px; }
 
   .quiz-choices { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
   .choice-btn {
-    background: #252525;
-    border: 1.5px solid #3a3a3a;
-    color: #ccc;
+    background: #ffffff;
+    border: 1.5px solid #e3ddd3;
+    color: #2b2620;
     padding: 14px 18px;
     border-radius: 8px;
     text-align: left;
@@ -361,27 +362,28 @@
     cursor: pointer;
     transition: all 0.15s;
   }
-  .choice-btn:hover:not(:disabled) { border-color: #d4a574; color: #fff; background: #2a2a2a; }
-  .choice-btn.correct { border-color: #4caf82; background: #1a3028; color: #7ddba0; }
-  .choice-btn.wrong { border-color: #e05c5c; background: #2d1a1a; color: #e08080; }
-  .choice-btn.show-correct { border-color: #4caf82; background: #1a3028; color: #7ddba0; }
+  .choice-btn:hover:not(:disabled) { border-color: #b8763d; color: #b8763d; background: #fbf3ea; }
+  .choice-btn.correct { border-color: #2e7d4f; background: #e9f6ee; color: #1f5c38; }
+  .choice-btn.wrong { border-color: #c94f4f; background: #fbecec; color: #a33939; }
+  .choice-btn.show-correct { border-color: #2e7d4f; background: #e9f6ee; color: #1f5c38; }
 
   .quiz-feedback {
     min-height: 60px;
-    background: #222;
+    background: #f7f5f2;
     border-radius: 8px;
     padding: 14px 18px;
     font-size: 0.88rem;
     line-height: 1.6;
+    color: #2b2620;
     display: none;
   }
-  .quiz-feedback.correct { border-left: 3px solid #4caf82; color: #7ddba0; display: block; }
-  .quiz-feedback.wrong { border-left: 3px solid #e05c5c; color: #e08080; display: block; }
+  .quiz-feedback.correct { border-left: 3px solid #2e7d4f; color: #1f5c38; display: block; }
+  .quiz-feedback.wrong { border-left: 3px solid #c94f4f; color: #a33939; display: block; }
 
   .quiz-next-btn {
     width: 100%;
-    background: #d4a574;
-    color: #1a1a1a;
+    background: #b8763d;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     padding: 14px;
@@ -400,11 +402,11 @@
     padding: 40px 20px;
   }
   .result-emoji { font-size: 4rem; margin-bottom: 16px; }
-  .result-score { font-size: 2.5rem; font-weight: bold; color: #d4a574; margin-bottom: 8px; }
-  .result-msg { font-size: 1rem; color: #aaa; margin-bottom: 28px; }
+  .result-score { font-size: 2.5rem; font-weight: bold; color: #b8763d; margin-bottom: 8px; }
+  .result-msg { font-size: 1rem; color: #8a8177; margin-bottom: 28px; }
   .result-retry-btn {
-    background: #d4a574;
-    color: #1a1a1a;
+    background: #b8763d;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     padding: 14px 40px;
@@ -418,8 +420,8 @@
     max-width: 320px;
     margin: 14px auto 0;
     background: transparent;
-    border: 1.5px solid #d4a574;
-    color: #d4a574;
+    border: 1.5px solid #b8763d;
+    color: #b8763d;
     border-radius: 8px;
     padding: 12px;
     font-size: 0.95rem;
@@ -431,43 +433,44 @@
   .guide-tools { margin-bottom: 20px; }
   .search-box {
     width: 100%;
-    background: #252525;
-    border: 1px solid #3a3a3a;
+    background: #ffffff;
+    border: 1px solid #e3ddd3;
     border-radius: 8px;
     padding: 11px 14px;
-    color: #e0e0e0;
+    color: #2b2620;
     font-size: 0.9rem;
     margin-bottom: 10px;
   }
-  .search-box::placeholder { color: #666; }
-  .search-box:focus { outline: none; border-color: #d4a574; }
+  .search-box::placeholder { color: #b5aca0; }
+  .search-box:focus { outline: none; border-color: #b8763d; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
   .chip {
-    background: #252525;
-    border: 1px solid #3a3a3a;
-    color: #aaa;
+    background: #ffffff;
+    border: 1px solid #e3ddd3;
+    color: #8a8177;
     padding: 5px 13px;
     border-radius: 14px;
     font-size: 0.75rem;
     cursor: pointer;
     transition: all 0.15s;
   }
-  .chip.active { background: #d4a574; color: #1a1a1a; border-color: #d4a574; font-weight: bold; }
+  .chip.active { background: #b8763d; color: #ffffff; border-color: #b8763d; font-weight: bold; }
   .card-cat {
     display: inline-block;
     font-size: 0.65rem;
-    color: #d4a574;
-    border: 1px solid #3a3a3a;
+    color: #b8763d;
+    background: #fbf3ea;
+    border: 1px solid #ecd9bd;
     border-radius: 10px;
     padding: 1px 9px;
     margin-top: 9px;
   }
-  .no-result { color: #666; text-align: center; padding: 24px; font-size: 0.85rem; }
+  .no-result { color: #b5aca0; text-align: center; padding: 24px; font-size: 0.85rem; }
 
   /* ===== 暗記カード（フラッシュカード） ===== */
   .flash-container { max-width: 480px; margin: 0 auto; padding: 0 16px 40px; }
-  .flash-intro { text-align: center; color: #888; font-size: 0.85rem; margin-bottom: 14px; }
-  .flash-progress { text-align: center; color: #d4a574; font-size: 0.85rem; font-weight: bold; margin-bottom: 14px; }
+  .flash-intro { text-align: center; color: #8a8177; font-size: 0.85rem; margin-bottom: 14px; }
+  .flash-progress { text-align: center; color: #b8763d; font-size: 0.85rem; font-weight: bold; margin-bottom: 14px; }
   .flash-card { perspective: 1000px; height: 300px; margin-bottom: 18px; cursor: pointer; }
   .flash-inner {
     position: relative; width: 100%; height: 100%;
@@ -477,38 +480,39 @@
   .flash-face {
     position: absolute; width: 100%; height: 100%;
     backface-visibility: hidden; -webkit-backface-visibility: hidden;
-    border-radius: 14px; border: 1px solid #3a3a3a;
+    border-radius: 14px; border: 1px solid #e3ddd3;
+    box-shadow: 0 1px 4px rgba(60, 40, 20, 0.06);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     padding: 24px; text-align: center;
   }
-  .flash-front { background: #222; }
-  .flash-back { background: #1e2830; transform: rotateY(180deg); }
-  .flash-front-en { font-size: 1.5rem; color: #d4a574; font-weight: bold; margin-bottom: 12px; }
-  .flash-hint { font-size: 0.75rem; color: #666; }
-  .flash-back-ja { font-size: 1.25rem; color: #fff; font-weight: bold; margin-bottom: 14px; }
-  .flash-back-desc { font-size: 0.9rem; color: #c8dce8; line-height: 1.65; }
+  .flash-front { background: #ffffff; }
+  .flash-back { background: #f5ede1; transform: rotateY(180deg); }
+  .flash-front-en { font-size: 1.5rem; color: #b8763d; font-weight: bold; margin-bottom: 12px; }
+  .flash-hint { font-size: 0.75rem; color: #b5aca0; }
+  .flash-back-ja { font-size: 1.25rem; color: #2b2620; font-weight: bold; margin-bottom: 14px; }
+  .flash-back-desc { font-size: 0.9rem; color: #5b5347; line-height: 1.65; }
   .flash-controls { display: flex; gap: 10px; }
   .flash-btn {
-    flex: 1; background: #2a2a2a; border: 1px solid #3a3a3a; color: #ddd;
+    flex: 1; background: #f7f5f2; border: 1px solid #e3ddd3; color: #2b2620;
     padding: 13px; border-radius: 8px; font-size: 0.9rem; cursor: pointer;
   }
-  .flash-btn.primary { background: #d4a574; color: #1a1a1a; border-color: #d4a574; font-weight: bold; }
+  .flash-btn.primary { background: #b8763d; color: #ffffff; border-color: #b8763d; font-weight: bold; }
 
   /* ===== クイズ レベル選択 ===== */
   .level-select { text-align: center; padding: 16px 0; }
-  .level-select h2 { font-size: 1.05rem; color: #e0e0e0; margin-bottom: 6px; }
-  .level-select p { font-size: 0.82rem; color: #888; margin-bottom: 22px; }
+  .level-select h2 { font-size: 1.05rem; color: #2b2620; margin-bottom: 6px; }
+  .level-select p { font-size: 0.82rem; color: #8a8177; margin-bottom: 22px; }
   .level-btns { display: flex; flex-direction: column; gap: 12px; max-width: 360px; margin: 0 auto; }
   .level-btn {
-    background: #222; border: 1.5px solid #3a3a3a; color: #e0e0e0;
+    background: #ffffff; border: 1.5px solid #e3ddd3; color: #2b2620;
     padding: 16px; border-radius: 10px; font-size: 1rem; font-weight: bold;
     cursor: pointer; transition: all 0.15s;
   }
-  .level-btn:hover { border-color: #d4a574; }
-  .level-btn .lv-sub { display: block; font-size: 0.72rem; color: #888; font-weight: normal; margin-top: 4px; }
+  .level-btn:hover { border-color: #b8763d; }
+  .level-btn .lv-sub { display: block; font-size: 0.72rem; color: #8a8177; font-weight: normal; margin-top: 4px; }
   .q-level-tag {
     display: inline-block; font-size: 0.68rem; font-weight: bold;
-    color: #1a1a1a; background: #d4a574; border-radius: 10px; padding: 1px 9px; margin-left: 6px;
+    color: #ffffff; background: #b8763d; border-radius: 10px; padding: 1px 9px; margin-left: 6px;
   }
 
   /* ===== 正誤アニメーション ===== */

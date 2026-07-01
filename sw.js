@@ -1,5 +1,5 @@
 // Claude Code UI ガイド - サービスワーカー（オフライン対応）
-const CACHE_NAME = 'cc-ui-guide-v2';
+const CACHE_NAME = 'cc-ui-guide-v3';
 const ASSETS = [
   './',
   './index.html',
