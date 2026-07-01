@@ -76,17 +76,18 @@
 
   /* モックUI */
   .mock-ui {
-    background: #252525;
-    border: 1px solid #3a3a3a;
+    background: #ffffff;
+    border: 1px solid #e3ddd3;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 28px;
+    box-shadow: 0 1px 4px rgba(60, 40, 20, 0.05);
   }
 
   /* タイトルバー */
   .mock-titlebar {
-    background: #1e1e1e;
-    border-bottom: 1px solid #333;
+    background: #f7f5f2;
+    border-bottom: 1px solid #e3ddd3;
     padding: 8px 14px;
     display: flex;
     align-items: center;
@@ -103,7 +104,7 @@
     flex: 1;
     text-align: center;
     font-size: 0.8rem;
-    color: #666;
+    color: #8a8177;
   }
 
   /* サイドバー + メイン */
@@ -112,8 +113,8 @@
   /* サイドバー */
   .mock-sidebar {
     width: 200px;
-    background: #1e1e1e;
-    border-right: 1px solid #333;
+    background: #faf8f5;
+    border-right: 1px solid #e3ddd3;
     padding: 12px 0;
     flex-shrink: 0;
     display: flex;
@@ -123,18 +124,18 @@
     padding: 8px 16px 16px;
     font-size: 0.9rem;
     font-weight: bold;
-    color: #d4a574;
+    color: #b8763d;
     display: flex;
     align-items: center;
     gap: 8px;
   }
   .sidebar-section {
     padding: 4px 0;
-    border-top: 1px solid #2a2a2a;
+    border-top: 1px solid #ece6db;
   }
   .sidebar-label {
     font-size: 0.65rem;
-    color: #555;
+    color: #a89f92;
     padding: 8px 16px 4px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -146,10 +147,10 @@
     cursor: pointer;
     transition: background 0.15s;
   }
-  .hl:hover { background: rgba(212, 165, 116, 0.12) !important; }
+  .hl:hover { background: rgba(184, 118, 61, 0.10) !important; }
   .hl.highlighted {
-    background: rgba(212, 165, 116, 0.15) !important;
-    outline: 1px solid rgba(212, 165, 116, 0.5);
+    background: rgba(184, 118, 61, 0.14) !important;
+    outline: 1px solid rgba(184, 118, 61, 0.5);
   }
 
   /* ツールチップ */
@@ -159,14 +160,14 @@
     left: calc(100% + 8px);
     top: 50%;
     transform: translateY(-50%);
-    background: #2f2f2f;
-    border: 1px solid #d4a574;
+    background: #ffffff;
+    border: 1px solid #b8763d;
     border-radius: 8px;
     padding: 10px 14px;
     width: 240px;
     z-index: 100;
     pointer-events: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 16px rgba(60, 40, 20, 0.18);
   }
   .hl .tip::before {
     content: '';
@@ -175,16 +176,16 @@
     top: 50%;
     transform: translateY(-50%);
     border: 6px solid transparent;
-    border-right-color: #d4a574;
+    border-right-color: #b8763d;
   }
   .hl:hover .tip, .hl.highlighted .tip { display: block; }
-  .tip-en { font-size: 0.8rem; color: #d4a574; margin-bottom: 4px; font-weight: bold; }
-  .tip-ja { font-size: 0.85rem; color: #ddd; line-height: 1.5; }
+  .tip-en { font-size: 0.8rem; color: #b8763d; margin-bottom: 4px; font-weight: bold; }
+  .tip-ja { font-size: 0.85rem; color: #2b2620; line-height: 1.5; }
   .tip-key {
     margin-top: 6px;
     font-size: 0.75rem;
-    color: #888;
-    background: #1a1a1a;
+    color: #8a8177;
+    background: #f7f5f2;
     padding: 2px 8px;
     border-radius: 4px;
     display: inline-block;
@@ -194,12 +195,12 @@
   .sidebar-item {
     padding: 8px 16px;
     font-size: 0.8rem;
-    color: #aaa;
+    color: #5b5347;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .sidebar-item.active-item { background: #2a2a2a; color: #e0e0e0; }
+  .sidebar-item.active-item { background: #f0ead9; color: #2b2620; }
   .icon { font-size: 1rem; }
 
   /* メインエリア */
@@ -215,41 +216,41 @@
     line-height: 1.5;
     max-width: 80%;
   }
-  .chat-user { background: #2d2d2d; margin-left: auto; color: #ccc; }
-  .chat-ai { background: #1e2830; color: #c8dce8; }
+  .chat-user { background: #f0ede8; margin-left: auto; color: #2b2620; }
+  .chat-ai { background: #eaf2f7; color: #2c4a5c; }
 
   /* ツールバー（入力上部） */
   .mock-toolbar {
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #2a2a2a;
+    border-top: 1px solid #e3ddd3;
+    border-bottom: 1px solid #ece6db;
     padding: 6px 12px;
     display: flex;
     align-items: center;
     gap: 6px;
-    background: #1e1e1e;
+    background: #faf8f5;
   }
   .toolbar-btn {
     padding: 4px 10px;
     border-radius: 4px;
     font-size: 0.75rem;
-    color: #888;
-    background: #2a2a2a;
-    border: 1px solid #3a3a3a;
+    color: #6b6255;
+    background: #f0ede8;
+    border: 1px solid #e3ddd3;
     cursor: pointer;
   }
 
   /* 入力エリア */
   .mock-input-area {
     padding: 10px 12px;
-    background: #1e1e1e;
-    border-top: 1px solid #333;
+    background: #faf8f5;
+    border-top: 1px solid #e3ddd3;
   }
   .mock-input {
-    background: #252525;
-    border: 1px solid #3a3a3a;
+    background: #ffffff;
+    border: 1px solid #e3ddd3;
     border-radius: 8px;
     padding: 10px 14px;
-    color: #888;
+    color: #8a8177;
     font-size: 0.82rem;
     width: 100%;
     display: flex;
@@ -258,8 +259,8 @@
   }
   .mock-input-text { flex: 1; }
   .send-btn {
-    background: #d4a574;
-    color: #1a1a1a;
+    background: #b8763d;
+    color: #ffffff;
     border: none;
     border-radius: 6px;
     padding: 4px 10px;
@@ -270,16 +271,16 @@
 
   /* ステータスバー */
   .mock-statusbar {
-    border-top: 1px solid #2a2a2a;
+    border-top: 1px solid #e3ddd3;
     padding: 5px 14px;
-    background: #1a1a1a;
+    background: #faf8f5;
     display: flex;
     gap: 12px;
     align-items: center;
   }
   .status-item {
     font-size: 0.72rem;
-    color: #666;
+    color: #8a8177;
     display: flex;
     align-items: center;
     gap: 4px;
